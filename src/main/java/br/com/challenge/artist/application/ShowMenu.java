@@ -54,6 +54,9 @@ public class ShowMenu {
                 case 3:
                     listSongs();
                     break;
+                case 4:
+                    searchMusicByArtist();
+                    break;
                 default:
                     System.out.println("Invalid option..");
                     break;
@@ -62,9 +65,16 @@ public class ShowMenu {
         }
     }
 
+    private void searchMusicByArtist() {
+        System.out.println("Search fro songs from which artist?");
+        var name = sc.nextLine();
+        List<Music> musicByArtist = artistService.findMusicByArtist(name);
+        musicByArtist.forEach(System.out::println);
+    }
+
     private void listSongs() {
         List<Artist> artist = artistService.findAll();
-        artist.forEach(System.out::println);
+        artist.forEach(a -> a.getMusicList().forEach(System.out::println));
     }
 
     private void registerMusic() {

@@ -39,4 +39,8 @@ public class ArtistService {
             System.out.println("Artist not found.");
         }
     }
+
+    public List<Music> findMusicByArtist(String artist){
+        return artistRepository.searchMusicByArtist(artist);
+    }
 }
