@@ -2,8 +2,10 @@ package br.com.challenge.artist.application;
 
 import br.com.challenge.artist.enums.Gender;
 import br.com.challenge.artist.model.Artist;
+import br.com.challenge.artist.model.Music;
 import br.com.challenge.artist.services.ArtistService;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ShowMenu {
@@ -57,7 +59,20 @@ public class ShowMenu {
     }
 
     private void registerMusic() {
-        System.out.println();
+        System.out.print("Register music from which artist? ");
+        var name = sc.nextLine();
+        Optional<Artist> artist = artistService.findByNameArtistContainingIgnoreCase(name);
+        if(artist.isPresent()){
+            System.out.print("What's the name of the song? ");
+            var title = sc.nextLine();
+            Music music = new Music(title);
+            music.setArtist(artist.get());
+            artistService.saveArtist(artist.get());
+        }
+        else {
+            System.out.println("Artist not found.");
+        }
+
 
     }
 

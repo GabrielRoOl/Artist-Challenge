@@ -5,6 +5,7 @@ import br.com.challenge.artist.repositories.ArtistRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArtistService {
@@ -23,4 +24,7 @@ public class ArtistService {
         return artistRepository.findAll();
     }
 
+    public Optional<Artist> findByNameArtistContainingIgnoreCase(String name) {
+        return artistRepository.findByNameArtistContainingIgnoreCase(name);
+    }
 }

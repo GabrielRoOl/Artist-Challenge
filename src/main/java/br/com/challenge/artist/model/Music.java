@@ -3,6 +3,7 @@ package br.com.challenge.artist.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "tb_music")
@@ -24,6 +25,10 @@ public class Music {
         this.artist = artist;
         this.id = id;
         this.nameMusic = nameMusic;
+    }
+
+    public Music(String title) {
+        this.nameMusic = title;
     }
 
     public Artist getArtist() {
