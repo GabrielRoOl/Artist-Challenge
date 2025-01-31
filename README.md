@@ -4,10 +4,10 @@
 ## Tecnologias Utilizadas
 - **Java 17**
 - **Spring Boot 3**
--   Spring Web
--   Spring Data JPA
--   H2 Database
--   PostgreSQL Driver
+  - Spring Web
+  -   Spring Data JPA
+  -   H2 Database
+  -   PostgreSQL Driver
 - **Banco de Dados PostgreSQL**
 - **H2 Database** (para testes)
 - **Hibernate** (ORM - Mapeamento Objeto Relacional)
