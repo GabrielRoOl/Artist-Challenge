@@ -5,6 +5,7 @@ import br.com.challenge.artist.model.Artist;
 import br.com.challenge.artist.model.Music;
 import br.com.challenge.artist.services.ArtistService;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -50,6 +51,9 @@ public class ShowMenu {
                 case 2:
                     registerMusic();
                     break;
+                case 3:
+                    listSongs();
+                    break;
                 default:
                     System.out.println("Invalid option..");
                     break;
@@ -58,16 +62,22 @@ public class ShowMenu {
         }
     }
 
+    private void listSongs() {
+        List<Artist> artist = artistService.findAll();
+        artist.forEach(System.out::println);
+    }
+
     private void registerMusic() {
         System.out.print("Register music from which artist? ");
         var name = sc.nextLine();
+
         Optional<Artist> artist = artistService.findByNameArtistContainingIgnoreCase(name);
         if(artist.isPresent()){
             System.out.print("What's the name of the song? ");
             var title = sc.nextLine();
             Music music = new Music(title);
-            music.setArtist(artist.get());
-            artistService.saveArtist(artist.get());
+
+            artistService.saveMusic(name, artist, music);
         }
         else {
             System.out.println("Artist not found.");

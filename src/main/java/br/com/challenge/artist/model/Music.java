@@ -57,7 +57,6 @@ public class Music {
 
     @Override
     public String toString() {
-        return  "Artist: " + artist +
-                " Name music: " + nameMusic;
+        return  "Name music: " + nameMusic;
     }
 }
